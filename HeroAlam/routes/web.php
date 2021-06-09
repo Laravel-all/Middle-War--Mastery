@@ -33,3 +33,12 @@ Route::middleware(['basicAuth'])->group(function () {
 });
 
 Route::get('/test', [HumController::class,'test'])->middleware('tom');
+
+
+Route::get('showage', 
+[
+    "uses" => "showAge@index",
+    "middleware" => "CheckAge"
+
+],
+);
