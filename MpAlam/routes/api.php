@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ProjectController;
+use App\Http\Controllers\Apis;
+use Facade\FlareClient\Api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +23,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('register', [AuthController::class,'register']);
-Route::post('login', [AuthController::class,'login']);
+// Route::post('register', [AuthController::class,'register']);
+// Route::post('login', [AuthController::class,'login']);
 
 // route::apiResource('projects',ProjectController::class)->middlware('auth:api');
+
+
+Route::post('/register_apis',[Apis::class,'register']);
+Route::post('/login_apis',[Apis::class,'login']);
+
+Route::middleware('auth:api')->get('/details', [Apis::class,'tasklist']);
+});
